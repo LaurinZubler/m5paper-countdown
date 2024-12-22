@@ -18,6 +18,16 @@ This project is a simple countdown calendar designed to run on the M5Paper e-ink
 
 **Others**: https://docs.platformio.org/en/stable/integration/ide/index.html
 
+## Test
+For unit testing the [Google Test](https://github.com/google/googletest) framework is used.
+
+PlatformIO Google Test Documentation: https://docs.platformio.org/en/latest/advanced/unit-testing/frameworks/googletest.html
+
+Run tests:
+```bash
+pio test -e test
+```
+
 ## Useful Links
 **M5EPD**: M5Paper Arduino Library
 - GitHub: https://github.com/m5stack/M5EPD/
