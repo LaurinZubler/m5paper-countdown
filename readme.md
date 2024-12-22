@@ -5,7 +5,7 @@ This project is a simple countdown calendar designed to run on the M5Paper e-ink
 
 ## Requirements
 - [M5Paper](https://docs.m5stack.com/en/core/m5paper): ESP32-based e-ink display
-- [PlatformIO](https://platformio.org/): An open-source platform for IoT development with a rich ecosystem of libraries and tools.
+- [PlatformIO Core CLI](https://docs.platformio.org/en/latest/core/index.html): An open-source platform for IoT development.
 
 ## IDE Setup
 **CLion**
