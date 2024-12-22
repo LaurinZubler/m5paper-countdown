@@ -25,7 +25,7 @@ PlatformIO Google Test Documentation: https://docs.platformio.org/en/latest/adva
 
 Run tests:
 ```bash
-pio test -e test
+pio test -e unit-tests
 ```
 
 ## Useful Links
