@@ -1,17 +1,15 @@
-#include <M5EPD.h>
+#include "CountdownTimer.h"
+#include "M5PaperController.h"
 
-M5EPD_Canvas canvas(&M5.EPD);
+CountdownTimer countdownTimer(2024, 12, 25);
+M5PaperController m5PaperController;
 
 void setup() {
-    M5.begin();
-    M5.EPD.SetRotation(90);
-    M5.EPD.Clear(true);
-    M5.RTC.begin();
-    canvas.createCanvas(400, 300);
-    canvas.setTextSize(3);
-    canvas.drawString("Hello World", 0, 0);
-    canvas.pushCanvas(0, 0, UPDATE_MODE_DU4);
+    m5PaperController.initialize();
 }
 
 void loop() {
+    const int daysRemaining = countdownTimer.getDaysRemaining();
+    m5PaperController.update(daysRemaining);
+    delay(86400000); // 24 h
 }

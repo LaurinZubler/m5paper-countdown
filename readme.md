@@ -12,11 +12,9 @@ This project is a simple countdown calendar designed to run on the M5Paper e-ink
   - https://www.jetbrains.com/help/clion/platformio.html
   - https://docs.platformio.org/en/stable/integration/ide/clion.html
 
-
 **VS Code**
   - https://platformio.org/platformio-ide
   - https://docs.platformio.org/en/stable/integration/ide/vscode.html#ide-vscode
-
 
 **Others**: https://docs.platformio.org/en/stable/integration/ide/index.html
 
