@@ -11,10 +11,12 @@ void setup() {
 }
 
 void loop() {
-    const int daysRemaining = countdownTimer.getDaysRemaining();
-    m5PaperController.update(daysRemaining);
+    const tm now = m5PaperController.getCurrentTime();
 
-    int secondsTillMidnight = DateUtils::getSecondsUntilMidnight();
-    secondsTillMidnight += 60; // add 1 min, just to be sure
+    const int daysRemaining = countdownTimer.getDaysRemaining(now);
+    m5PaperController.show(daysRemaining);
+
+    int secondsTillMidnight = DateUtils::getSecondsUntilMidnight(now);
+    secondsTillMidnight += 60; // add 1 min, just to be sure :)
     delay(secondsTillMidnight);
 }

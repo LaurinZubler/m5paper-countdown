@@ -4,9 +4,11 @@
 #include <M5EPD.h>
 
 class M5PaperController {
+
 public:
     void initialize();
-    void update(int remainingDays);
+    void show(int remainingDays);
+    tm getCurrentTime();
 };
 
 #endif // M5PAPERCONTROLLER_H

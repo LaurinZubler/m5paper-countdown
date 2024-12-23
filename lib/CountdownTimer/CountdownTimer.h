@@ -9,7 +9,7 @@ tm targetDate{};
 
 public:
     CountdownTimer(int year, int month, int day);
-    int getDaysRemaining() const;
+    int getDaysRemaining(const tm& now) const;
 };
 
 #endif // COUNTDOWNTIMER_H
