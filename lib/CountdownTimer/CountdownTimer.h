@@ -5,8 +5,7 @@
 #include <string>
 
 class CountdownTimer {
-private:
-    tm targetDate{};
+tm targetDate{};
 
 public:
     CountdownTimer(int year, int month, int day);

@@ -20,3 +20,4 @@ tm* DateUtils::getCurrentDateTime() {
     time_t now = time(nullptr);
     return localtime(&now);
 }
+
