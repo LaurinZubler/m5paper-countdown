@@ -1,13 +1,15 @@
 #include "DateUtils.h"
 
 int DateUtils::getDaysBetween(const tm& date1, const tm& date2) {
-    time_t t1 = mktime(const_cast<tm*>(&date1));
-    time_t t2 = mktime(const_cast<tm*>(&date2));
-    return static_cast<int>(difftime(t2, t1) / (60 * 60 * 24));
+    const time_t time1 = mktime(const_cast<tm*>(&date1));
+    const time_t time2 = mktime(const_cast<tm*>(&date2));
+    const double diff = difftime(time2, time1);
+    const int days = static_cast<int>(diff / (60 * 60 * 24));
+    return days;
 }
 
 int DateUtils::getSecondsUntilMidnight() {
-    tm* now = DateUtils::getCurrentDateTime();
+    tm* now = getCurrentDateTime();
 
     return (23 - now->tm_hour) * 3600 +
            (59 - now->tm_min) * 60 +
