@@ -9,7 +9,7 @@ int DateUtils::getDaysBetween(const tm& date1, const tm& date2) {
 }
 
 int DateUtils::getSecondsUntilMidnight() {
-    tm* now = getCurrentDateTime();
+    const tm* now = getCurrentDateTime();
 
     return (23 - now->tm_hour) * 3600 +
            (59 - now->tm_min) * 60 +
@@ -17,7 +17,7 @@ int DateUtils::getSecondsUntilMidnight() {
 }
 
 tm* DateUtils::getCurrentDateTime() {
-    time_t now = time(nullptr);
+    const time_t now = time(nullptr);
     return localtime(&now);
 }
 
