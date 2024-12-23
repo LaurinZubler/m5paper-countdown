@@ -10,9 +10,3 @@ int DateUtils::getDaysBetween(const tm& date1, const tm& date2) {
     const int days = static_cast<int>(diff / (60 * 60 * 24));
     return days;
 }
-
-int DateUtils::getSecondsUntilMidnight(const tm& date) {
-    return (23 - date.tm_hour) * 3600 +
-           (59 - date.tm_min) * 60 +
-           (60 - date.tm_sec);
-}

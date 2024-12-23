@@ -7,7 +7,7 @@ class DateUtils {
 
 public:
     static int getDaysBetween(const tm& date1, const tm& date2);
-    static int getSecondsUntilMidnight(const tm& date);
+    static tm getCurrentTimeFromNTP();
 };
 
 #endif // DATEUTILS_H
