@@ -1,3 +1,5 @@
+#include <DateUtils.h>
+
 #include "CountdownTimer.h"
 #include "M5PaperController.h"
 
@@ -11,5 +13,8 @@ void setup() {
 void loop() {
     const int daysRemaining = countdownTimer.getDaysRemaining();
     m5PaperController.update(daysRemaining);
-    delay(86400000); // 24 h
+
+    int secondsTillMidnight = DateUtils::getSecondsUntilMidnight();
+    secondsTillMidnight += 60; // add 1 min, just to be sure
+    delay(secondsTillMidnight);
 }
