@@ -46,8 +46,7 @@ tm M5PaperController::getSystemTime() {
     return time;
 }
 
-void M5PaperController::setSystemTime(const tm& currentTime)
-{
+void M5PaperController::setSystemTime(const tm& currentTime) {
     RTCtime.hour = currentTime.tm_hour;
     RTCtime.min = currentTime.tm_min;
     RTCtime.sec = currentTime.tm_sec;
