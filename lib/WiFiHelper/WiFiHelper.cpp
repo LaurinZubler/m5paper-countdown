@@ -1,5 +1,7 @@
 #include "WiFiHelper.h"
 #include "config.h"
+#include <M5EPD.h>
+#include <WiFi.h>
 
 void WiFiHelper::connect() {
     Serial.println("Connecting to WiFi...");
