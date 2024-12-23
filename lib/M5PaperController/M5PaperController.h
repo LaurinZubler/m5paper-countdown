@@ -1,14 +1,17 @@
 #ifndef M5PAPERCONTROLLER_H
 #define M5PAPERCONTROLLER_H
 
-#include <M5EPD.h>
+#include <ctime>
 
 class M5PaperController {
 
+static void setupTime();
+
 public:
-    void initialize();
+void setSystemTime(const tm& currentTime);
+    void initialize(const tm& currentTime);
     void show(int daysRemaining);
-    tm getCurrentTime();
+    tm getSystemTime();
 };
 
 #endif // M5PAPERCONTROLLER_H

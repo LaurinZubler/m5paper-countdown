@@ -18,6 +18,20 @@ This project is a simple countdown calendar designed to run on the M5Paper e-ink
 
 **Others**: https://docs.platformio.org/en/stable/integration/ide/index.html
 
+## WIFI
+A WiFi connection is required to sync the date and time of the M5Paper.
+
+To configure the connection, create a `config.h` file in the `include/` directory with this content:
+```c++
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define WIFI_SSID "Your_SSID"
+#define WIFI_PASSWORD "Your_Password"
+
+#endif // CONFIG_H
+```
+
 ## Test
 For unit testing the [Google Test](https://github.com/google/googletest) framework is used.
 

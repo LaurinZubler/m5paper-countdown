@@ -1,22 +1,24 @@
-#include <DateUtils.h>
-
 #include "CountdownTimer.h"
 #include "M5PaperController.h"
+#include "WiFiController.h"
+#include "NTPController.h"
+#include <M5EPD.h>
 
-CountdownTimer countdownTimer(2024, 12, 25);
 M5PaperController m5PaperController;
+NTPController ntp;
+WiFiController wifi;
+CountdownTimer countdownTimer(2025, 10, 1);
 
 void setup() {
-    m5PaperController.initialize();
+    wifi.connect();
+    const tm currentTime = ntp.getTime();
+    m5PaperController.initialize(currentTime);
 }
 
 void loop() {
-    const tm now = m5PaperController.getCurrentTime();
-
-    const int daysRemaining = countdownTimer.getDaysRemaining(now);
-    m5PaperController.show(daysRemaining);
-
-    int secondsTillMidnight = DateUtils::getSecondsUntilMidnight(now);
-    secondsTillMidnight += 60; // add 1 min, just to be sure :)
-    delay(secondsTillMidnight);
+    tm now = m5PaperController.getSystemTime();
+    const int days = countdownTimer.getDaysRemaining(now);
+    m5PaperController.show(days);
+    // delay(1000 * 60); // 1min
+    delay(1000); // s
 }

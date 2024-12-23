@@ -6,11 +6,13 @@ M5EPD_Canvas canvas(&M5.EPD);
 rtc_time_t RTCtime;
 rtc_date_t RTCDate;
 
-
-void M5PaperController::initialize() {
+void M5PaperController::initialize(const tm& currentTime) {
     M5.begin();
     M5.EPD.SetRotation(90);
     M5.EPD.Clear(true);
+
+    setSystemTime(currentTime);
+
     M5.RTC.begin();
     canvas.createCanvas(540, 960);
     canvas.setTextSize(3);
@@ -38,13 +40,21 @@ void M5PaperController::show(const int daysRemaining) {
     canvas.pushCanvas(0, 0, UPDATE_MODE_DU4);
 }
 
-tm M5PaperController::getCurrentTime() {
-    rtc_time_t time;
-    rtc_date_t date;
+tm M5PaperController::getSystemTime() {
+    tm time;
+    getLocalTime(&time);
+    return time;
+}
 
-    M5.RTC.getTime(&time);
-    M5.RTC.getDate(&date);
+void M5PaperController::setSystemTime(const tm& currentTime)
+{
+    RTCtime.hour = currentTime.tm_hour;
+    RTCtime.min = currentTime.tm_min;
+    RTCtime.sec = currentTime.tm_sec;
+    M5.RTC.setTime(&RTCtime);
 
-    tm currentTime = {time.sec, time.min, time.hour, date.day, date.mon, date.year - 1900};
-    return currentTime;
+    RTCDate.year = currentTime.tm_year + 1900;
+    RTCDate.mon = currentTime.tm_mon + 1;
+    RTCDate.day = currentTime.tm_mday;
+    M5.RTC.setDate(&RTCDate);
 }
