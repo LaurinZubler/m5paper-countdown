@@ -1,10 +1,11 @@
 #include "DateUtils.h"
+#include <cmath>
 
 int DateUtils::getDaysBetween(const tm& date1, const tm& date2) {
     const time_t time1 = mktime(const_cast<tm*>(&date1));
     const time_t time2 = mktime(const_cast<tm*>(&date2));
     const double diff = difftime(time2, time1);
-    const int days = static_cast<int>(diff / (60 * 60 * 24));
+    const int days = static_cast<int>(std::round(diff / (60 * 60 * 24)));
     return days;
 }
 
