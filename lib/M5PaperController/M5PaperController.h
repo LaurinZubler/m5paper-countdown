@@ -7,7 +7,7 @@ class M5PaperController {
 
 public:
     void initialize();
-    void show(int remainingDays);
+    void show(int daysRemaining);
     tm getCurrentTime();
 };
 
