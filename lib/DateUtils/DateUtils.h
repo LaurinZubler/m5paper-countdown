@@ -4,12 +4,10 @@
 #include <ctime>
 
 class DateUtils {
-private:
-    static tm* getCurrentDateTime();
 
 public:
     static int getDaysBetween(const tm& date1, const tm& date2);
-    static int getSecondsUntilMidnight();
+    static int getSecondsUntilMidnight(const tm& date);
 };
 
 #endif // DATEUTILS_H
