@@ -1,11 +1,11 @@
-#include "NTPController.h"
+#include "NTPHelper.h"
 #include <M5EPD.h>
 #include <ctime>
 
 const int MET = 3600 * 1;  // MET is UTC+1
 const int DST = 3600 * 1;  // Daylight Saving Time adds another +1 hour
 
-tm NTPController::getTime() {
+tm NTPHelper::getTime() {
     Serial.println("Syncing time with NTP...");
     configTime(MET, DST, "pool.ntp.org", "time.nist.gov");
 

@@ -1,12 +1,12 @@
 #include "CountdownTimer.h"
 #include "M5PaperController.h"
-#include "WiFiController.h"
-#include "NTPController.h"
+#include "WiFiHelper.h"
+#include "NTPHelper.h"
 #include <M5EPD.h>
 
 M5PaperController m5PaperController;
-NTPController ntp;
-WiFiController wifi;
+NTPHelper ntp;
+WiFiHelper wifi;
 CountdownTimer countdownTimer(2025, 10, 1);
 
 void setup() {

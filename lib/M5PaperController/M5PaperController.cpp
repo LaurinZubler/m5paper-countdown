@@ -15,7 +15,6 @@ void M5PaperController::initialize(const tm& currentTime) {
 
     M5.RTC.begin();
     canvas.createCanvas(540, 960);
-    canvas.setTextSize(3);
 }
 
 void M5PaperController::show(const int daysRemaining) {
