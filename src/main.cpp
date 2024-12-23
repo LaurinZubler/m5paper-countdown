@@ -16,7 +16,7 @@ void setup() {
 }
 
 void loop() {
-    tm now = m5PaperController.getSystemTime();
+    const tm now = m5PaperController.getSystemTime();
     const int days = countdownTimer.getDaysRemaining(now);
     m5PaperController.show(days);
     // delay(1000 * 60); // 1min
