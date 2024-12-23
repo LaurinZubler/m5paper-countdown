@@ -15,28 +15,41 @@ void M5PaperController::initialize(const tm& currentTime) {
 
     M5.RTC.begin();
     canvas.createCanvas(540, 960);
+    canvas.setTextDatum(CC_DATUM);
+    canvas.setTextSize(4);
+    canvas.drawString("Noch", 540/2, 960/4);
+    canvas.drawString("bis zur", 540/2, 960*0.75);
+    canvas.drawString("Pensionierung", 540/2, 960*0.83);
+
+    canvas.setTextSize(48);
+    canvas.setTextDatum(TC_DATUM);
+    canvas.drawString("Tage", 540/2, 960*0.52);
+
+    canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
 }
 
 void M5PaperController::show(const int daysRemaining) {
-    M5.RTC.getTime(&RTCtime);
-    M5.RTC.getDate(&RTCDate);
+    // remaining days
+    canvas.createCanvas(540, 960);
+    canvas.setTextDatum(BC_DATUM);
+    canvas.setTextSize(128);
+    canvas.drawNumber(daysRemaining, 540/2, 960*0.48);
+    canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
 
-    char timeStrbuff[64];
-    sprintf(timeStrbuff, "%d/%02d/%02d %02d:%02d:%02d",
-        RTCDate.year,
-        RTCDate.mon,
-        RTCDate.day,
-        RTCtime.hour,
-        RTCtime.min,
-        RTCtime.sec
+    // update timestamp
+    canvas.createCanvas(540, 960);
+    canvas.setTextDatum(BR_DATUM);
+    canvas.setTextSize(1);
+
+    const tm now = getSystemTime();
+    char strBuff[64];
+    sprintf(strBuff, "%d-%02d-%02d %02d:%02d:%02d",
+        now.tm_year + 1900, now.tm_mon + 1, now.tm_mday,
+        now.tm_hour, now.tm_min, now.tm_sec
     );
 
-    char timeStrbuff2[64];
-    sprintf(timeStrbuff2, "Days remaining: %d", daysRemaining);
-
-    canvas.drawString(timeStrbuff, 10, 10);
-    canvas.drawString(timeStrbuff2, 10, 60);
-    canvas.pushCanvas(0, 0, UPDATE_MODE_DU4);
+    canvas.drawString(strBuff, 539, 950);
+    canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
 }
 
 tm M5PaperController::getSystemTime() {
