@@ -6,6 +6,7 @@
 class M5PaperController {
 
 static void setupTime();
+static int getBatteryPercentage();
 
 public:
 void setSystemTime(const tm& currentTime);

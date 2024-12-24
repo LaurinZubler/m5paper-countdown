@@ -36,7 +36,7 @@ void M5PaperController::updateScreen(const int daysRemaining) {
     canvas.drawNumber(daysRemaining, 540/2, 960*0.48);
     canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
 
-    // update timestamp
+    // timestamp
     canvas.createCanvas(540, 960);
     canvas.setTextDatum(BR_DATUM);
     canvas.setTextSize(1);
@@ -49,7 +49,28 @@ void M5PaperController::updateScreen(const int daysRemaining) {
     );
 
     canvas.drawString(strBuff, 539, 950);
+
+    // battery percentage
+    canvas.createCanvas(540, 50);
+    canvas.setTextDatum(BL_DATUM);
+
+    char batteryStr[32];
+    int batteryPercentage = getBatteryPercentage();
+    sprintf(batteryStr, "%d%%", batteryPercentage);
+
+    canvas.drawString(batteryStr, 0, 950);
     canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
+}
+
+int M5PaperController::getBatteryPercentage() {
+    const unsigned int voltage = M5.getBatteryVoltage();
+
+    // Cap voltage to realistic range
+    if (voltage > 4200) return 100; // Fully charged
+    if (voltage < 3000) return 0;   // Fully discharged
+
+    // Linear interpolation to estimate percentage
+    return (voltage - 3000) * 100 / (4200 - 3000);
 }
 
 tm M5PaperController::getSystemTime() {
