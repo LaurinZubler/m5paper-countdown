@@ -28,7 +28,7 @@ void M5PaperController::initialize(const tm& currentTime) {
     canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
 }
 
-void M5PaperController::show(const int daysRemaining) {
+void M5PaperController::updateScreen(const int daysRemaining) {
     // remaining days
     canvas.createCanvas(540, 960);
     canvas.setTextDatum(BC_DATUM);

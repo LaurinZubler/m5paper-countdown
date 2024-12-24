@@ -10,7 +10,7 @@ static void setupTime();
 public:
 void setSystemTime(const tm& currentTime);
     void initialize(const tm& currentTime);
-    void show(int daysRemaining);
+    void updateScreen(int daysRemaining);
     tm getSystemTime();
 };
 
