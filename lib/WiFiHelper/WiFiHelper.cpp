@@ -13,3 +13,9 @@ void WiFiHelper::connect() {
     }
     Serial.println("\nConnected to WiFi");
 }
+
+void WiFiHelper::disconnect() {
+    if (WiFi.status() != WL_CONNECTED) {
+        WiFi.disconnect();
+    }
+}

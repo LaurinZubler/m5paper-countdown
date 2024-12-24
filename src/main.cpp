@@ -13,6 +13,7 @@ void setup() {
     wifi.connect();
     const tm currentTime = ntp.getTime();
     m5PaperController.initialize(currentTime);
+    wifi.disconnect();
 }
 
 void loop() {

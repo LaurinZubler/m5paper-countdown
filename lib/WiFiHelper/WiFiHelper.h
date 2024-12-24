@@ -4,6 +4,7 @@
 class WiFiHelper {
 public:
     void connect();
+    void disconnect();
 };
 
 #endif //WIFIHELPER_H
