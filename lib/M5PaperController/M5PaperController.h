@@ -12,6 +12,7 @@ public:
 void setSystemTime(const tm& currentTime);
     void initialize(const tm& currentTime);
     void updateScreen(int daysRemaining);
+    void sleep(int seconds);
     tm getSystemTime();
 };
 

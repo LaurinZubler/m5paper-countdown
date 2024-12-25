@@ -16,6 +16,7 @@ void WiFiHelper::connect() {
 
 void WiFiHelper::disconnect() {
     if (WiFi.status() != WL_CONNECTED) {
-        WiFi.disconnect();
+        WiFi.disconnect(true);
+        WiFi.mode(WIFI_OFF);
     }
 }

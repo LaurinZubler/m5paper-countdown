@@ -62,6 +62,10 @@ void M5PaperController::updateScreen(const int daysRemaining) {
     canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
 }
 
+void M5PaperController::sleep(const int seconds) {
+    M5.shutdown(seconds);
+}
+
 int M5PaperController::getBatteryPercentage() {
     const unsigned int voltage = M5.getBatteryVoltage();
 
