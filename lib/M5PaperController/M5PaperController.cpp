@@ -42,23 +42,22 @@ void M5PaperController::updateScreen(const int daysRemaining) {
     canvas.setTextSize(1);
 
     const tm now = getSystemTime();
-    char strBuff[64];
+    char strBuff[32];
     sprintf(strBuff, "%d-%02d-%02d %02d:%02d:%02d",
         now.tm_year + 1900, now.tm_mon + 1, now.tm_mday,
         now.tm_hour, now.tm_min, now.tm_sec
     );
 
-    canvas.drawString(strBuff, 539, 950);
+    canvas.drawString(strBuff, 539, 955);
 
     // battery percentage
-    canvas.createCanvas(540, 50);
     canvas.setTextDatum(BL_DATUM);
 
     char batteryStr[32];
     int batteryPercentage = getBatteryPercentage();
     sprintf(batteryStr, "%d%%", batteryPercentage);
 
-    canvas.drawString(batteryStr, 0, 950);
+    canvas.drawString(batteryStr, 0, 955);
     canvas.pushCanvas(0, 0, UPDATE_MODE_DU);
 }
 
