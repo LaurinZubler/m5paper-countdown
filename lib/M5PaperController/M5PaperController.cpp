@@ -65,12 +65,11 @@ void M5PaperController::updateScreen(const int daysRemaining) {
 int M5PaperController::getBatteryPercentage() {
     const unsigned int voltage = M5.getBatteryVoltage();
 
-    // Cap voltage to realistic range
-    if (voltage > 4200) return 100; // Fully charged
-    if (voltage < 3000) return 0;   // Fully discharged
+    if (voltage > 4350) return 100;
+    if (voltage < 3000) return 0;
 
-    // Linear interpolation to estimate percentage
-    return (voltage - 3000) * 100 / (4200 - 3000);
+    const float battery = static_cast<float>(voltage - 3300) / static_cast<float>(4350 - 3300) * 100;
+    return static_cast<int>(battery);
 }
 
 tm M5PaperController::getSystemTime() {
