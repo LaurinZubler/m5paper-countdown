@@ -1,4 +1,5 @@
 #include "M5PaperController.h"
+#include "BatteryHelper.h"
 #include <M5EPD.h>
 
 M5EPD_Canvas canvas(&M5.EPD);
@@ -67,12 +68,8 @@ void M5PaperController::sleep(const int seconds) {
 
 int M5PaperController::getBatteryPercentage() {
     const unsigned int voltage = M5.getBatteryVoltage();
-
-    if (voltage > 4350) return 100;
-    if (voltage < 3000) return 0;
-
-    const float battery = static_cast<float>(voltage - 3300) / static_cast<float>(4350 - 3300) * 100;
-    return static_cast<int>(battery);
+    const int percentage = BatteryHelper::getBatteryPercentageFromVoltage(voltage);
+    return percentage;
 }
 
 tm M5PaperController::getSystemTime() {
