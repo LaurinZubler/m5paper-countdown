@@ -42,6 +42,17 @@ Run tests:
 pio test
 ```
 
+## Run
+```shell
+pio run -e m5stack-fire -t upload
+```
+
+## nix
+If using nix, run to set up dev environment:
+```shell
+nix-shell
+```
+
 ## Useful Links
 **M5EPD**: M5Paper Arduino Library
 - GitHub: https://github.com/m5stack/M5EPD/
