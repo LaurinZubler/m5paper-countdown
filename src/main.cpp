@@ -21,7 +21,7 @@ void loop() {
     const int days = countdownTimer.getDaysRemaining(now);
     m5PaperController.updateScreen(days);
 
-    constexpr int delaySeconds = 60 * 60; // 1h
+    constexpr int delaySeconds = 60 * 60 * 8; // 8h
     m5PaperController.sleep(delaySeconds);
     delay(delaySeconds * 1000);
 }
