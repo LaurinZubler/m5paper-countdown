@@ -7,7 +7,7 @@
 M5PaperController m5PaperController;
 NTPHelper ntp;
 WiFiHelper wifi;
-CountdownTimer countdownTimer(2025, 9, 11);
+CountdownTimer countdownTimer(2025, 9, 1);
 
 void setup() {
     wifi.connect();
